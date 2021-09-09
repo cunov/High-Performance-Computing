@@ -1,0 +1,184 @@
+	.file	"bench.c"
+# GNU C17 (GCC) version 11.2.1 20210728 (Red Hat 11.2.1-1) (x86_64-redhat-linux)
+#	compiled by GNU C version 11.2.1 20210728 (Red Hat 11.2.1-1), GMP version 6.2.0, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version none
+# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+# options passed: -mtune=generic -march=x86-64 -Os
+	.text
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC4:
+	.string	"benchmark time for one iteration: %f micro seconds\n"
+.LC5:
+	.string	"the result is: %lf\n"
+	.section	.text.startup,"ax",@progbits
+	.globl	main
+	.type	main, @function
+main:
+.LFB6:
+	.cfi_startproc
+	pushq	%rbp	#
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+# bench.c:12: 	double *b = (double*) malloc(sz * sizeof(double));
+	movl	$1953125, %edi	#, tmp106
+# bench.c:5: void main(int argc, char *argv[]){
+	pushq	%rbx	#
+	.cfi_def_cfa_offset 24
+	.cfi_offset 3, -24
+# bench.c:12: 	double *b = (double*) malloc(sz * sizeof(double));
+	salq	$12, %rdi	#, tmp106
+# bench.c:5: void main(int argc, char *argv[]){
+	subq	$40, %rsp	#,
+	.cfi_def_cfa_offset 64
+# bench.c:12: 	double *b = (double*) malloc(sz * sizeof(double));
+	call	malloc	#
+# bench.c:15: 	for (size_t i=0; i<bench_iter; ++i){
+	xorl	%edx, %edx	# i
+# bench.c:12: 	double *b = (double*) malloc(sz * sizeof(double));
+	movq	%rax, %rbp	# tmp138, b
+.L6:
+# bench.c:17: 		for (size_t j=0; j<sz; ++j){
+	xorl	%eax, %eax	# j
+.L2:
+# bench.c:17: 		for (size_t j=0; j<sz; ++j){
+	testq	%rax, %rax	# j
+	js	.L4	#,
+	cvtsi2sdq	%rax, %xmm0	# j, tmp108
+	jmp	.L5	#
+.L4:
+	movq	%rax, %rcx	# j, tmp110
+	movq	%rax, %rsi	# j, tmp111
+	shrq	%rcx	# tmp110
+	andl	$1, %esi	#, tmp111
+	orq	%rsi, %rcx	# tmp111, tmp110
+	cvtsi2sdq	%rcx, %xmm0	# tmp110, tmp109
+	addsd	%xmm0, %xmm0	# tmp109, tmp108
+.L5:
+	movsd	.LC0(%rip), %xmm2	#, tmp143
+	comisd	%xmm0, %xmm2	# tmp108, tmp143
+	jbe	.L18	#,
+# bench.c:17: 		for (size_t j=0; j<sz; ++j){
+	incq	%rax	# j
+	jmp	.L2	#
+.L18:
+# bench.c:20: 		b[i] = 0; // reset b's to zero
+	movq	$0x000000000, 0(%rbp,%rdx,8)	#, MEM[(double *)b_36 + i_65 * 8]
+# bench.c:15: 	for (size_t i=0; i<bench_iter; ++i){
+	incq	%rdx	# i
+# bench.c:15: 	for (size_t i=0; i<bench_iter; ++i){
+	cmpq	$10, %rdx	#, i
+	jne	.L6	#,
+# bench.c:24: 	timespec_get(&bench_start_time, TIME_UTC);
+	movl	$1, %esi	#,
+	movq	%rsp, %rdi	#,
+	call	timespec_get	#
+# bench.c:25: 	for (size_t i=0; i<bench_iter; ++i){
+	xorl	%edx, %edx	# i
+.L7:
+# bench.c:26: 		for (size_t j=0; j<sz; ++j){
+	xorl	%eax, %eax	# j
+.L12:
+# bench.c:26: 		for (size_t j=0; j<sz; ++j){
+	testq	%rax, %rax	# j
+	js	.L8	#,
+	cvtsi2sdq	%rax, %xmm0	# j, _10
+	jmp	.L9	#
+.L8:
+	movq	%rax, %rcx	# j, tmp118
+	movq	%rax, %rsi	# j, tmp119
+	shrq	%rcx	# tmp118
+	andl	$1, %esi	#, tmp119
+	orq	%rsi, %rcx	# tmp119, tmp118
+	cvtsi2sdq	%rcx, %xmm0	# tmp118, tmp117
+	addsd	%xmm0, %xmm0	# tmp117, _10
+.L9:
+	movsd	.LC0(%rip), %xmm3	#, tmp146
+	comisd	%xmm0, %xmm3	# _10, tmp146
+	jbe	.L19	#,
+# bench.c:27: 			b[i] += j;
+	addsd	0(%rbp,%rdx,8), %xmm0	# MEM[(double *)b_36 + i_66 * 8], tmp115
+# bench.c:26: 		for (size_t j=0; j<sz; ++j){
+	incq	%rax	# j
+# bench.c:27: 			b[i] += j;
+	movsd	%xmm0, 0(%rbp,%rdx,8)	# tmp115, MEM[(double *)b_36 + i_66 * 8]
+	jmp	.L12	#
+.L19:
+# bench.c:25: 	for (size_t i=0; i<bench_iter; ++i){
+	incq	%rdx	# i
+# bench.c:25: 	for (size_t i=0; i<bench_iter; ++i){
+	cmpq	$10, %rdx	#, i
+	jne	.L7	#,
+# bench.c:30: 	timespec_get(&bench_stop_time, TIME_UTC);
+	movl	$1, %esi	#,
+	leaq	16(%rsp), %rdi	#, tmp147
+# bench.c:36: 	for (size_t i=0; i<bench_iter; ++i){
+	xorl	%ebx, %ebx	# i
+# bench.c:30: 	timespec_get(&bench_stop_time, TIME_UTC);
+	call	timespec_get	#
+# bench.c:32: 	bench_diff_time = difftime(bench_stop_time.tv_sec, bench_start_time.tv_sec) * 1000000 + 
+	movq	16(%rsp), %rdi	# bench_stop_time.tv_sec,
+	movq	(%rsp), %rsi	# bench_start_time.tv_sec,
+	call	difftime	#
+# bench.c:33: 		(bench_stop_time.tv_nsec - bench_start_time.tv_nsec) / 1000;
+	movq	24(%rsp), %rax	# bench_stop_time.tv_nsec, bench_stop_time.tv_nsec
+	subq	8(%rsp), %rax	# bench_start_time.tv_nsec, tmp124
+# bench.c:33: 		(bench_stop_time.tv_nsec - bench_start_time.tv_nsec) / 1000;
+	movl	$1000, %ecx	#, tmp129
+# bench.c:32: 	bench_diff_time = difftime(bench_stop_time.tv_sec, bench_start_time.tv_sec) * 1000000 + 
+	mulsd	.LC2(%rip), %xmm0	#, tmp131
+# bench.c:33: 		(bench_stop_time.tv_nsec - bench_start_time.tv_nsec) / 1000;
+	cqto
+# bench.c:34: 	printf("benchmark time for one iteration: %f micro seconds\n", bench_diff_time / bench_iter);
+	movl	$.LC4, %edi	#,
+# bench.c:33: 		(bench_stop_time.tv_nsec - bench_start_time.tv_nsec) / 1000;
+	idivq	%rcx	# tmp129
+# bench.c:32: 	bench_diff_time = difftime(bench_stop_time.tv_sec, bench_start_time.tv_sec) * 1000000 + 
+	cvtsi2sdq	%rax, %xmm1	# tmp127, tmp130
+# bench.c:34: 	printf("benchmark time for one iteration: %f micro seconds\n", bench_diff_time / bench_iter);
+	movb	$1, %al	#,
+# bench.c:32: 	bench_diff_time = difftime(bench_stop_time.tv_sec, bench_start_time.tv_sec) * 1000000 + 
+	addsd	%xmm1, %xmm0	# tmp130, bench_diff_time
+# bench.c:34: 	printf("benchmark time for one iteration: %f micro seconds\n", bench_diff_time / bench_iter);
+	divsd	.LC3(%rip), %xmm0	#, tmp134
+	call	printf	#
+.L13:
+# bench.c:37: 		printf("the result is: %lf\n", b[i]);
+	movsd	0(%rbp,%rbx,8), %xmm0	# MEM[(double *)b_36 + i_67 * 8], MEM[(double *)b_36 + i_67 * 8]
+	movl	$.LC5, %edi	#,
+	movb	$1, %al	#,
+# bench.c:36: 	for (size_t i=0; i<bench_iter; ++i){
+	incq	%rbx	# i
+# bench.c:37: 		printf("the result is: %lf\n", b[i]);
+	call	printf	#
+# bench.c:36: 	for (size_t i=0; i<bench_iter; ++i){
+	cmpq	$10, %rbx	#, i
+	jne	.L13	#,
+# bench.c:41: }
+	addq	$40, %rsp	#,
+	.cfi_def_cfa_offset 24
+# bench.c:40: 	free(b);
+	movq	%rbp, %rdi	# b,
+# bench.c:41: }
+	popq	%rbx	#
+	.cfi_def_cfa_offset 16
+	popq	%rbp	#
+	.cfi_def_cfa_offset 8
+# bench.c:40: 	free(b);
+	jmp	free	#
+	.cfi_endproc
+.LFE6:
+	.size	main, .-main
+	.section	.rodata.cst8,"aM",@progbits,8
+	.align 8
+.LC0:
+	.long	0
+	.long	1104006501
+	.align 8
+.LC2:
+	.long	0
+	.long	1093567616
+	.align 8
+.LC3:
+	.long	0
+	.long	1076101120
+	.ident	"GCC: (GNU) 11.2.1 20210728 (Red Hat 11.2.1-1)"
+	.section	.note.GNU-stack,"",@progbits

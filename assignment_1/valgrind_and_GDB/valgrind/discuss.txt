@@ -1,0 +1,21 @@
+Without commenting the initialization, we see
+
+HEAP SUMMARY:
+	in use at exit: 0 bytes in 0 blocks
+	total heap usage: 2 allocs, 2 frees, 1064 bytes alloc'd
+all heap blocks freed
+0 errors from 0 contexts
+
+After commenting out "//as = (int*)malloc(10*sizeof(int));", we see
+
+Use of uninitialized value of size 8 (on line 11)
+ Process terminating with default action of signal 11 (SIGSEGV): dumping core
+Bad permissions for mapped region at address ... (on line 11)
+
+Along with nothing wrong on the heap. This tells us in pretty clear langauge that we tried to use something without initializing it. Rerunning with the flag --track-origins=yes it says
+
+Use of uninitialised value of size 8
+Uninitialized value was created by stack allocation
+
+This is kind of extraneous given it told us the line we messed up on.
+

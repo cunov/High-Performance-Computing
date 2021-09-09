@@ -1,0 +1,8 @@
+Segmentation fault at size = 10M. A seg fault is thrown when the program tries to access "out of bounds" memory.
+
+The stack size in bytes is:
+[hpcuser026@gantenbein stack_allocation]$ ulimit -s
+8192
+
+I then re-ran it with a size of 2,093,973 which uses 8179 megabytes, that worked. Inc'ing the size by 1 yielded a failure.
+In this case, we exceeded the size of the stack.

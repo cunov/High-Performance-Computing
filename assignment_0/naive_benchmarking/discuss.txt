@@ -1,0 +1,8 @@
+O0 is default (no optimization, fastest compile)		3553284.500000 micro seconds
+O1 is optimize (longer compilation, more memory)		1108369.000000 micro seconds
+O2 is optimize more (+compilation, +performance)		1121769.700000 micro seconds
+O3 is optimize even more					1145410.500000 micro seconds 
+Os is optimize for size (bytes of code and data)		2522330.700000 micro seconds
+Og is optimize for debugging					2576853.700000 micro seconds
+
+idk what else was running on cpu at the time of these, and i only did 10 iterations (didn't check that that yielded consistent averages)

@@ -1,0 +1,14 @@
+[hpcuser026@gantenbein inlining]$ ./same/exe
+-16.000000 + 0.000000i
+10000 iterations took (9126034.000000) micro seconds on avg
+[hpcuser026@gantenbein inlining]$ ./different/exe
+-16.000000 + 16.000000i
+10000 iterations took (9135571.000000) microseconds on avg
+[hpcuser026@gantenbein inlining]$ ./manual/exe
+2.000000 + 2.000000i
+10000 iterations took (9082738.000000) microseconds on avg
+
+FASTNESS IN ORDER:
+manual
+same
+different

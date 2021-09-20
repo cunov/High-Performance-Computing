@@ -1,0 +1,12 @@
+[hpcuser026@gantenbein locality]$ ./naive/O0
+5000 iterations took (28136641.000000) micro seconds on avg
+[hpcuser026@gantenbein locality]$ ./naive/O2
+5000 iterations took (13070683.000000) micro seconds on avg
+[hpcuser026@gantenbein locality]$ ./naive/O2_native
+5000 iterations took (12158716.000000) micro seconds on avg
+[hpcuser026@gantenbein locality]$ ./local/O0
+5000 iterations took (26886112.000000) micro seconds on avg
+[hpcuser026@gantenbein locality]$ ./local/O2
+5000 iterations took (8898350.000000) micro seconds on avg
+[hpcuser026@gantenbein locality]$ ./local/O2_native
+5000 iterations took (8091921.000000) micro seconds on avg

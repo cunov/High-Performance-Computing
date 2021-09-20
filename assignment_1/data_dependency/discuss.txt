@@ -1,0 +1,18 @@
+[hpcuser026@gantenbein data_dependency]$ ./O0
+[ROW_SUMS]       5000 iterations took (12899910.000000) micro seconds on avg
+[UNROLLED 2]     5000 iterations took (6921138.000000) micro seconds on avg
+[UNROLLED 4]     5000 iterations took (5166203.000000) micro seconds on avg
+[UNROLLED 8]     5000 iterations took (5863381.000000) micro seconds on avg
+[UNROLLED 4 arr] 5000 iterations took (6110742.000000) micro seconds on avg
+[hpcuser026@gantenbein data_dependency]$ ./O2
+[ROW_SUMS]       5000 iterations took (5081800.000000) micro seconds on avg
+[UNROLLED 2]     5000 iterations took (2948941.000000) micro seconds on avg
+[UNROLLED 4]     5000 iterations took (1921987.000000) micro seconds on avg
+[UNROLLED 8]     5000 iterations took (1952207.000000) micro seconds on avg
+[UNROLLED 4 arr] 5000 iterations took (1122101.000000) micro seconds on avg
+[hpcuser026@gantenbein data_dependency]$ ./O2_native
+[ROW_SUMS]       5000 iterations took (5079975.000000) micro seconds on avg
+[UNROLLED 2]     5000 iterations took (2945680.000000) micro seconds on avg
+[UNROLLED 4]     5000 iterations took (1921023.000000) micro seconds on avg
+[UNROLLED 8]     5000 iterations took (1152097.000000) micro seconds on avg
+[UNROLLED 4 arr] 5000 iterations took (1921728.000000) micro seconds on avg

@@ -1,0 +1,17 @@
+[hpcuser026@gantenbein hdd_ssd]$ ./exe
+[HDD, IND]      1129754.100000 micro seconds, on avg over 10 iterations
+[HDD, ARR]      4004.000000 micro seconds, on avg over 10 iterations
+[SSD, IND]      3914.000000 micro seconds, on avg over 10 iterations
+[SSD, ARR]      1134556.000000 micro seconds, on avg over 10 iterations
+
+
+[hpcuser026@gantenbein hdd_ssd]$ time for i in {1..10}; do cp -r include include_copy; done;
+
+real    0m8.914s
+user    0m1.032s
+sys     0m7.158s
+[hpcuser026@gantenbein hdd_ssd]$ time for i in {1..10}; do cp -r /usr/include /run/mount/scratch/hpcuser026/include; done;
+
+real    0m9.317s
+user    0m0.974s
+sys     0m7.613s

@@ -1,0 +1,16 @@
+Averages for 1000 iterations...
+[BASE]  2484421.000000 micro seconds
+[p1]    3065931.000000 micro seconds
+[p2]    7648165.000000 micro seconds
+
+[hpcuser026@gantenbein indirect_addressing]$ ./O2
+Averages for 1000 iterations...
+[BASE]  687041.000000 micro seconds
+[p1]    1052833.000000 micro seconds
+[p2]    7931908.000000 micro seconds
+
+[hpcuser026@gantenbein indirect_addressing]$ ./O2_native
+Averages for 1000 iterations...
+[BASE]  673992.000000 micro seconds
+[p1]    1029770.000000 micro seconds
+[p2]    7869374.000000 micro seconds
